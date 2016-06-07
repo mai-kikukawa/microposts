@@ -2,3 +2,15 @@
   <%= gravatar_for @user %>
   <%= @user.name %>
 </h1>
+
+<dl>
+  <dt>plofile</dt>
+  <dd>
+    <ul>
+      <li>location: <%= @user.location.present? ? @user.location : "--Unregistered--" %></li>
+      <% if current_user?(@user) %>
+        <li>email: <%= @user.email %></li></li>
+      <% end %>
+    </ul>
+  </dd>
+</dl>
