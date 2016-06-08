@@ -2,7 +2,7 @@ class UsersController < ApplicationController
   before_action :set_user, only: [:show, :edit, :update]
   before_action :correct_user, only: [:edit, :update]
 
-  def show # 追加
+  def show
   end
   
   def new
@@ -35,13 +35,15 @@ class UsersController < ApplicationController
 
   def user_params
     params.require(:user).permit(:name, :email, :location, :password,
-                                   :password_confirmation)
+                                   :password_confirmation, :profire)
   end
 
   def set_user
     @user = User.find(params[:id])
   end
 
+  private
+  
   def correct_user
     redirect_to root_path if !current_user?(@user)
   end

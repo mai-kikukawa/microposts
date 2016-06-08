@@ -11,4 +11,10 @@ class User < ActiveRecord::Base
   validates :location, allow_blank: true, 
                        length: { minimum: 2, maximum: 20 }, 
                        on: :update
+                       
+  validates :profire, absence: true, 
+                       on: :create
+  validates :profire, allow_blank: true, 
+                       length: { minimum: 2, maximum: 100 }, 
+                       on: :update
 end
