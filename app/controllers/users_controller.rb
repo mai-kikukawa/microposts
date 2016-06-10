@@ -1,10 +1,11 @@
 class UsersController < ApplicationController
   before_action :set_user, only: [:show, :edit, :update]
   before_action :correct_user, only: [:edit, :update]
-
-  def show
-  end
   
+  def show
+    @microposts = @user.microposts.order(created_at: :desc)
+  end
+
   def new
     @user = User.new
   end
@@ -14,6 +15,7 @@ class UsersController < ApplicationController
     if @user.save
       flash[:success] = "Welcome to the Sample App!"
       redirect_to @user
+      #  user_path  GET    /users/:id(.:format)   users#show
     else
       render 'new'
     end
