@@ -11,4 +11,13 @@
     <h1 class="bg-primary"></h1>
     <%= render @users %>
   </div>
+  
+  <div class="col-md-8">
+    <% if @users.any? %>
+      <h3>Followers (<%= @users.count %>)</h3>
+      <ul class="user">
+        <%= render @users %>
+      </ul>
+    <% end %>
+  </div>
 </div> 
